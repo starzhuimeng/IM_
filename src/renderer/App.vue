@@ -2,7 +2,7 @@
   <div id="app">
     <div id="app-bar">
       <div id="app-title">
-        vue-cli-electron-template
+        IM for Windows
       </div>
       <div id="app-action">
         <div
@@ -27,27 +27,16 @@
     </div>
 
     <div id="content">
-      <div id="routers">
-        <router-link to="/">
-          Home
-        </router-link> |
-        <router-link to="/about">
-          About
-        </router-link>
-      </div>
       <router-view />
-      <locale-changer style="position: fixed; right: 30px; top: 50px;" />
     </div>
   </div>
 </template>
 
 <script>
 import { remote } from 'electron'
-import localeChanger from 'components/localeChanger'
 
 export default {
   components: {
-    localeChanger
   },
   data () {
     return {
@@ -68,6 +57,7 @@ export default {
 <style lang="less">
 body {
   margin: 0;
+  overflow: hidden;
 }
 
 // 取消一些默认效果，使得应用看起来更加原生

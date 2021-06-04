@@ -1,11 +1,12 @@
 const path = require('path')
 const IS_PROD = process.env.NODE_ENV === 'production'
 
-function resolve (dir) {
+function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
 module.exports = {
+  lintOnSave: false,
   pages: {
     app: {
       title: 'vue-cli-electron-template',

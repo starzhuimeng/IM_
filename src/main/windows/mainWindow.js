@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2021-06-04 19:15:20
+ * @LastEditTime: 2021-06-04 20:02:50
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \im\src\main\windows\mainWindow.js
+ */
 import { BrowserWindow, Menu } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 
@@ -58,7 +66,7 @@ class MainWindow {
     if (process.platform === 'darwin') {
       const template = [
         {
-          label: 'vue-cli-electron-template',
+          label: 'IM',
           submenu: [
             {
               role: 'about'
