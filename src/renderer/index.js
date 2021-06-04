@@ -10,7 +10,7 @@ import api from 'renderer/network/api'
 import SvgIcon from 'components/svgIcon/index.vue'
 import SvgIconList from 'components/svgIcon'
 import Antd from 'ant-design-vue';
-import 'ant-design-vue/dist/antd.css';
+
 // Plugins ------
 import i18n from 'plugins/i18n'
 import Bus from 'plugins/bus'
@@ -19,6 +19,7 @@ import Bus from 'plugins/bus'
 import $backend from 'backend'
 
 // Less or Css ------
+import 'ant-design-vue/dist/antd.less'; // 引入官方提供的 less 样式入口文件
 /* Nothing now */
 
 // Add Prototype ------

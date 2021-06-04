@@ -1,12 +1,22 @@
 const path = require('path')
 const IS_PROD = process.env.NODE_ENV === 'production'
-
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
-
+const theme = require('./theme.js')
 module.exports = {
   lintOnSave: false,
+  css: {
+    loaderOptions: {
+      less: {
+        lessOptions: {
+          // If you are using less-loader@5 please spread the lessOptions to options directly
+          modifyVars: theme,
+          javascriptEnabled: true,
+        },
+      },
+    },
+  },
   pages: {
     app: {
       title: 'vue-cli-electron-template',
