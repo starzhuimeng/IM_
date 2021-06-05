@@ -27,6 +27,7 @@ Vue.prototype.$backend = $backend
 Vue.prototype.SvgIconList = SvgIconList
 Vue.prototype.$electron = require('electron') // You can access electron object with `this.$electron` in renderer process
 Vue.prototype.$api = api
+Vue.prototype.$message = Antd.message
 Vue.config.productionTip = false
 
 // Use plugins

@@ -1,12 +1,12 @@
 <template>
   <div id="login">
-    <a-row style="padding: 100% 20px">
+    <a-row style="padding: 0px 20px">
       <a-col :span="24">
         <a-form
             id="components-form-demo-normal-login"
-            :form="form"
+            :form="loginForm"
             class="login-form"
-            @submit="handleSubmit"
+            @submit="beforeLogin"
         >
           <a-row>
             <a-col>
@@ -17,6 +17,7 @@
                 {
                   rules: [
                     { required: true, message: '请输入用户名' },
+                    { pattern: /^\w+$/, message: '用户名不能是中文'}
                   ],
                 },
               ]"
@@ -40,6 +41,8 @@
                 {
                   rules: [
                     { required: true, message: '请输入密码' },
+                    // { min: 8, message: '密码至少8位' },
+                    {pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,10}$/, message: '必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间'}
                   ],
                 },
               ]"
@@ -93,7 +96,6 @@
                     注册
                   </a-button>
                 </a-col>
-
               </a-form-item>
             </a-col>
           </a-row>
@@ -114,17 +116,31 @@
 export default {
   name: 'login',
   beforeCreate () {
-    this.form = this.$form.createForm(this, { name: 'normal_login' })
+    this.loginForm = this.$form.createForm(this, { name: 'normal_login' })
   },
   methods: {
-    handleSubmit (e) {
+    beforeLogin (e) {
       e.preventDefault()
-      this.form.validateFields((err, values) => {
-        if (!err) {
-          console.log('Received values of form: ', values)
-        }
-      })
+      const result = this.loginForm.getFieldsValue()
+      if (result) {
+        this.loginError(result)
+      } else {
+        this.loginForm.getFieldsValue().then(this.login).catch(this.loginError)
+      }
     },
+    login (params) {
+      if (params) {
+        // 处理一下然后请求
+        this.$api.user_login(params).then(this.afterLogin).catch(err => this.$message.error(err))
+      }
+      console.log(params)
+    },
+    loginError (err) {
+      console.log(err)
+    },
+    afterLogin (res) {
+
+    }
   },
 }
 </script>
@@ -137,7 +153,7 @@ export default {
   justify-contents: space-between
 
 #login
-  width: 30vw
+  width: 100vw
   height: 100vh
   background: #fff
   color: #000

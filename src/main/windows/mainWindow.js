@@ -41,10 +41,10 @@ class MainWindow {
     }
 
     const win = new BrowserWindow({
-      width: 1100,
-      height: 770,
-      minWidth: 1100,
-      minHeight: 770,
+      width: 430,
+      height: 350,
+      // minWidth: 1100,
+      // minHeight: 770,
       webPreferences: {
         /* 注意，这些设置有关程序的安全性，请谨慎使用！
           Note: these settings are related to the security of the program, please use it with caution! */
