@@ -31,6 +31,7 @@ module.exports = {
   productionSourceMap: !IS_PROD,
   devServer: {
     // can be overwritten by process.env.HOST
+    before:require('./mock/mock-server.js'),
     host: 'localhost',
     port: 8099
   },
