@@ -6,6 +6,8 @@ import App from 'renderer/App.vue'
 import router from 'renderer/router'
 import store from 'renderer/store'
 import api from 'renderer/network/api'
+// mock
+// import mock from '../../mock/index'
 // Components ------
 import SvgIcon from 'components/svgIcon/index.vue'
 import SvgIconList from 'components/svgIcon'
@@ -33,15 +35,15 @@ Vue.config.productionTip = false
 // Use plugins
 Vue.use(Bus, { router })
 Vue.use(Antd)
-// Use components ------
+    // Use components ------
 Vue.component('SvgIcon', SvgIcon)
 
 // Vue options
 const options = {
-  router,
-  store,
-  i18n,
-  render: h => h(App)
+    router,
+    store,
+    i18n,
+    render: h => h(App)
 }
 
 // Finally, returns the new vue instance
