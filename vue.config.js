@@ -1,11 +1,31 @@
 const path = require('path')
 const IS_PROD = process.env.NODE_ENV === 'production'
+<<<<<<< HEAD
 
 function resolve (dir) {
   return path.join(__dirname, dir)
 }
 
 module.exports = {
+=======
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
+const theme = require('./theme.js')
+module.exports = {
+  lintOnSave: false,
+  css: {
+    loaderOptions: {
+      less: {
+        lessOptions: {
+          // If you are using less-loader@5 please spread the lessOptions to options directly
+          modifyVars: theme,
+          javascriptEnabled: true,
+        },
+      },
+    },
+  },
+>>>>>>> d88d5d08deccb37e486ff4196a7e940d82524c9a
   pages: {
     app: {
       title: 'vue-cli-electron-template',
@@ -20,6 +40,10 @@ module.exports = {
   productionSourceMap: !IS_PROD,
   devServer: {
     // can be overwritten by process.env.HOST
+<<<<<<< HEAD
+=======
+    before:require('./mock/mock-server.js'),
+>>>>>>> d88d5d08deccb37e486ff4196a7e940d82524c9a
     host: 'localhost',
     port: 8099
   },
